@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚗 Car Price Prediction</h1>
+
+    <input type="number" id="present_price" placeholder="Present Price">
+    <input type="number" id="kms_driven" placeholder="Kms Driven">
+    <input type="number" id="car_age" placeholder="Car Age">
+
+    <select id="fuel_type">
+        <option>Petrol</option>
+        <option>Diesel</option>
+        <option>CNG</option>
+    </select>
+
+    <select id="seller_type">
+        <option>Dealer</option>
+        <option>Individual</option>
+    </select>
+
+    <select id="transmission">
+        <option>Manual</option>
+        <option>Automatic</option>
+    </select>
+
+    <input type="number" id="owner" placeholder="Owner Count">
+
+    <button onclick="predictPrice()">Predict Price</button>
+
+    <h2 id="result"></h2>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
