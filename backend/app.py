@@ -36,6 +36,11 @@ def health_check():
     return {"status": "API is running"}
 
 
+@app.get("/")
+def root():
+    return {"message": "Welcome to Car Price Prediction API. Use /docs for API documentation."}
+
+
 @app.post("/predict")
 def predict_price(data: CarInput):
 
