@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+import os
 
 # Load trained model
 model = joblib.load("model.pkl")
@@ -54,3 +56,8 @@ def predict_price(data: CarInput):
     return {
         "predicted_price": round(float(prediction[0]), 2)
     }
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
