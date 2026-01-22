@@ -5,6 +5,7 @@ import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
+from fastapi.staticfiles import StaticFiles
 
 # Load trained model
 model = joblib.load("model.pkl")
@@ -20,6 +21,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static files (frontend)
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="static")
+
 # Input schema
 class CarInput(BaseModel):
     Present_Price: float
@@ -31,17 +35,17 @@ class CarInput(BaseModel):
     Car_Age: int
 
 
-@app.get("/health")
+@app.get("/api/health")
 def health_check():
     return {"status": "API is running"}
 
 
-@app.get("/")
+@app.get("/api/")
 def root():
     return {"message": "Welcome to Car Price Prediction API. Use /docs for API documentation."}
 
 
-@app.post("/predict")
+@app.post("/api/predict")
 def predict_price(data: CarInput):
 
     input_data = {
