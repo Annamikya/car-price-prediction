@@ -10,7 +10,7 @@ async function predictPrice() {
         Car_Age: parseInt(document.getElementById("car_age").value)
     };
 
-    const response = await fetch("https://your-backend-app.onrender.com/predict", {
+    const response = await fetch("https://car-price-prediction-49m5.onrender.com/predict", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
