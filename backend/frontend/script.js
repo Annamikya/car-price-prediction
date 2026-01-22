@@ -55,3 +55,51 @@ document.getElementById('prediction-form').addEventListener('submit', async func
         button.classList.remove('loading');
     }
 });
+// Custom cursor effectconst cursor = document.querySelector(".cursor");
+const follower = document.querySelector(".cursor-follower");
+
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+});
+
+function animateFollower() {
+    followerX += (mouseX - followerX) * 0.15;
+    followerY += (mouseY - followerY) * 0.15;
+
+    follower.style.left = followerX + "px";
+    follower.style.top = followerY + "px";
+
+    requestAnimationFrame(animateFollower);
+}
+
+animateFollower();
+
+/* Button loading UX */
+const form = document.getElementById("prediction-form");
+const button = document.getElementById("predict-btn");
+const result = document.getElementById("result");
+const priceValue = document.getElementById("price-value");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    button.classList.add("loading");
+    button.disabled = true;
+    button.textContent = "Predicting...";
+
+    setTimeout(() => {
+        button.classList.remove("loading");
+        button.disabled = false;
+        button.textContent = "Predict Price";
+
+        priceValue.textContent = "₹ 4.85 Lakhs";
+        result.classList.remove("hidden");
+    }, 1500);
+});

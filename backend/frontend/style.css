@@ -359,3 +359,97 @@ footer p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+/* ================================
+   ADVANCED CURSOR ANIMATION
+================================ */
+
+.cursor {
+    width: 10px;
+    height: 10px;
+    background: rgba(102, 126, 234, 0.9);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(102, 126, 234, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease-out;
+}
+
+/* Hover effects */
+input:hover ~ .cursor,
+select:hover ~ .cursor,
+button:hover ~ .cursor {
+    transform: scale(1.5);
+}
+
+/* ================================
+   GLASSMORPHISM UPGRADE
+================================ */
+
+.container {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* ================================
+   INPUT MICRO INTERACTIONS
+================================ */
+
+input, select {
+    position: relative;
+}
+
+input:hover, select:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+}
+
+/* ================================
+   MAGNETIC BUTTON EFFECT
+================================ */
+
+button[type="submit"] {
+    will-change: transform;
+}
+
+button[type="submit"]:hover {
+    transform: scale(1.03);
+}
+
+/* ================================
+   RESULT GLOW EFFECT
+================================ */
+
+.result {
+    box-shadow: 0 0 40px rgba(245, 87, 108, 0.6);
+}
+
+/* ================================
+   SMOOTH SCROLL + TEXT
+================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================================
+   REDUCE MOTION FOR ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
