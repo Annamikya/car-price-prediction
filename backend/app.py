@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 # Mount static files (frontend)
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="static")
+app.mount("/", StaticFiles(directory="frontend", html=True), name="static")
 
 # Input schema
 class CarInput(BaseModel):
